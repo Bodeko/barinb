@@ -11,7 +11,7 @@ phases:
   install:
     commands:
       - npm install -g npm@latest
-      - npm install @types/node@latest --save-dev
+      - npm install @types/node@latest --save-dev --force
       - echo "Check aws and git version"
       - aws --version
       - git --version
