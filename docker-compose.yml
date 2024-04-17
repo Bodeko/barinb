@@ -3,12 +3,14 @@ version: 0.2
 env:
   variables:
     AWS_DEFAULT_REGION: "eu-central-1"
-    AWS_ACCOUNT_ID    : "905418307264"
-    ECR_REPO_NAME     : "barinb"
-    ECR_IMAGE_TAG     : "latest"
+    AWS_ACCOUNT_ID: "905418307264"
+    ECR_REPO_NAME: "barinb"
+    ECR_IMAGE_TAG: "latest"
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 16
     commands:
       - npm install -g npm@latest
       - npm install @types/node@latest --save-dev --force
@@ -19,7 +21,7 @@ phases:
   pre_build:
     commands:
       - echo "Login to AWS ECR and get commit id"
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION| docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - COMMIT_ID=$(git rev-parse --short HEAD)
 
   build:
@@ -34,5 +36,4 @@ phases:
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$ECR_IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$COMMIT_ID
-
 
