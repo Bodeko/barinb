@@ -10,6 +10,7 @@ env:
 phases:
   install:
     commands:
+      - npm install -g npm@latest
       - npm install @types/node@latest --save-dev
       - echo "Check aws and git version"
       - aws --version
