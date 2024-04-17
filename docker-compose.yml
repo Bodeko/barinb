@@ -12,11 +12,12 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
-      - npm install -g npm@latest
-      - npm install @types/node@latest --save-dev --force
       - echo "Check aws and git version"
       - aws --version
       - git --version
+      - echo "Installing npm version compatible with Node.js 16.20.2 ..."
+      - npm install -g npm@8.19.4
+      - npm install @types/node@latest --save-dev --force
 
   pre_build:
     commands:
@@ -36,4 +37,3 @@ phases:
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$ECR_IMAGE_TAG
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$COMMIT_ID
-
