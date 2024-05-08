@@ -3,8 +3,8 @@ version: 0.2
 env:
   variables:
     AWS_DEFAULT_REGION: "eu-central-1"
-    AWS_ACCOUNT_ID: "905418307264"
-    ECR_REPO_NAME: "barinb"
+    AWS_ACCOUNT_ID: "905418199722"
+    ECR_REPO_NAME: "marketplace"
     ECR_IMAGE_TAG: "latest"
     COMMIT_ID: ""
 
