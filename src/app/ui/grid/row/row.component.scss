@@ -10,14 +10,14 @@
         flex-direction: row;
         flex-wrap: wrap;
         height: 100%;
-        margin: 0 -1rem;
+        margin: 0;
       }
 
       &.row-#{$breakpoint}.no-padding {
         margin: 0;
       }
 
-      &.row-#{$breakpoint}.no-padding ::ng-deep > [class^='column-#{$breakpoint}'] {
+      &.row-#{$breakpoint}.no-padding > [class^='column-#{$breakpoint}'] {
         padding-right: 0;
         padding-left: 0;
       }
