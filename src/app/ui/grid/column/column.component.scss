@@ -1,12 +1,14 @@
 @use 'sass:math';
 @import 'src/stylesheets/utils';
-// Define default values if needed
+
+// Определение значений по умолчанию, если это необходимо
 $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px
 ) !default;
+
 @mixin make-columns($columnName: 'column', $gutter: 1rem, $columnsCount: 12) {
   @each $breakpoint, $width in $grid-breakpoints {
     @media (min-width: $width) {
@@ -27,6 +29,10 @@ $grid-breakpoints: (
       }
     }
   }
+}
+
+:host {
+  @include make-columns();
 }
 :host {
   @include make-columns();
