@@ -34,6 +34,3 @@ $grid-breakpoints: (
 :host {
   @include make-columns();
 }
-:host {
-  @include make-columns();
-}
