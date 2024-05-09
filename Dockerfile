@@ -1,11 +1,10 @@
 ### STAGE 1: Build ###
-FROM node:16-alpine AS build
+FROM node:16 AS build
 WORKDIR /usr/src/app
 COPY package.json ./
-RUN yarn install --ignore-engines
+RUN npm install
 COPY . .
-ENV GOOGLE_MAPS_KEY ''
-RUN yarn run build-prod || echo "Build failed but continuing..."
+RUN npm run build:prod
 
 ### STAGE 2: Run ###
 FROM nginx:1.21-alpine
