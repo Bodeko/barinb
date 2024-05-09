@@ -5,7 +5,7 @@ COPY package.json ./
 RUN yarn install --ignore-engines
 COPY . .
 ENV GOOGLE_MAPS_KEY ''
-RUN yarn run ng build --configuration production
+RUN yarn run ng build --configuration production --bail=false
 
 ### STAGE 2: Run ###
 FROM nginx:1.21-alpine
